@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import styles from './login.style';
@@ -23,7 +23,7 @@ const login = () => {
     const redirectUri = makeRedirectUri();
     const clientId = 'b985ca02-0481-409c-9b83-0a7248e1bc3e';
 
-    const [token, setToken] = React.useState(null);
+    const [token, setToken] = useState(null);
 
     const [request, response, promptAsync] = useAuthRequest(
         {
@@ -33,6 +33,12 @@ const login = () => {
         },
         discovery,
     );
+
+    useEffect(() => {
+      console.log(token);
+    
+    }, [token]);
+    
 
     const handleSignIn = () => {
         promptAsync().then((codeResponse) => {
@@ -49,7 +55,6 @@ const login = () => {
                     discovery,
                 ).then((res) => {
                     setToken(res.accessToken);
-                    console.log(token);
                 });
             }
         });
