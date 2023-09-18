@@ -35,3 +35,12 @@ const styles = StyleSheet.create({
 });
 
 export default styles;
+
+
+// client id: b985ca02-0481-409c-9b83-0a7248e1bc3e
+
+// value: L9q8Q~PkyOsHI.N4Zp6sucwpxfA181gug7rC~db4
+
+// secreat id: 48e36daa-84e5-4b69-b3fa-1ed172ed0fdc
+
+// tenet id : 91cc1fb6-1275-4acf-b3ea-c213ec16257b
