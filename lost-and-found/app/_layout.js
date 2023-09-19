@@ -14,6 +14,7 @@ const Layout = () => {
         DMBold: require("../assets/fonts/DMSans-Bold.ttf"),
         DMMedium: require("../assets/fonts/DMSans-Medium.ttf"),
         DMRegular: require("../assets/fonts/DMSans-Regular.ttf"),
+        MontserratRegular: require("../assets/fonts/Montserrat_400Regular.ttf"),
         Cookie_400Regular,
         Merienda_400Regular,
     })
