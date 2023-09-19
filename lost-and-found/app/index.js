@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, ScrollView, SafeAreaView } from "react-native";
-import Login from "../components/login/login.js";
+import Feedback from "../components/feedback/feedback.js";
 import { Stack, useRouter } from "expo-router";
 
 const Home = () => {
@@ -9,6 +9,7 @@ const Home = () => {
             <Stack.Screen
                 options={{
                     headerShadowVisible: false,
+                    // headerTransparent: true,
                     headerTitle: "",
                     headerStyle: { backgroundColor: "#FAFAFC" },
                 }}
@@ -18,7 +19,7 @@ const Home = () => {
                 <View
                     style={{ flex: 1}}
                 >
-                    <Login />
+                    <Feedback />
                 </View>
             </ScrollView>
 
