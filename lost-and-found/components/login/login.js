@@ -14,7 +14,7 @@ import {
 
 WebBrowser.maybeCompleteAuthSession();
 
-const login = () => {
+const Login = () => {
 
     const discovery = useAutoDiscovery(
         'https://login.microsoftonline.com/91cc1fb6-1275-4acf-b3ea-c213ec16257b/v2.0',
@@ -88,4 +88,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Login
