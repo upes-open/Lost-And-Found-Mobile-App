@@ -1,11 +1,22 @@
 import { Stack } from "expo-router";
-import { useCallback } from "react";
-import { View, Text, ScrollView, SafeAreaView } from "react-native";
+import { useCallback, useContext, useState } from "react";
+import { View, Text, Image, SafeAreaView } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { Cookie_400Regular } from '@expo-google-fonts/cookie';
 import { Merienda_400Regular } from '@expo-google-fonts/merienda';
 import { Drawer } from "expo-router/drawer";
+import { DrawerItemList } from "@react-navigation/drawer";
+import { AppProvider } from "../../context/AppContext";
+import DrawerMenu from "../../components/drawer/DrawerMenu";
+
+import {
+    SimpleLineIcons,
+    MaterialIcons,
+    MaterialCommunityIcons,
+    FontAwesome
+} from "@expo/vector-icons";
+
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,27 +41,64 @@ const Layout = () => {
 
     if (!fontsLoaded) return null;
 
+
     return (
-        <View style={{ flex: 1, marginTop: -30}}>
-            <Drawer screenOptions={{ headerShown: false}} onLayout={onLayoutRootView}>
-                <Drawer.Screen
-                    name="login"
-                    options={{
-                        drawerLabel: "Login",
-                        title: "Login",
+        <AppProvider>
+            <View style={{ flex: 1, marginTop: -30 }}>
+                <Drawer
+                    screenOptions={{
+                        headerShown: false,
+                        drawerStyle: {
+                            backgroundColor: "#fff",
+                            width: 250
+                        },
+                        headerStyle: {
+                            backgroundColor: "#f4511e",
+                        },
+                        drawerLabelStyle: {
+                            color: "#111"
+                        }
                     }}
-                />
 
-                <Drawer.Screen
-                    name="feedback"
-                    options={{
-                        drawerLabel: "Feedback",
-                        title: "Feedback"
-                    }}
-                />
+                    onLayout={onLayoutRootView}
 
-            </Drawer>
-        </View>
+                    drawerContent={
+                        (props) => {
+                            return (
+                                <SafeAreaView>
+                                    <DrawerMenu />
+                                    <DrawerItemList {...props} />
+                                </SafeAreaView>
+                            )
+                        }
+                    }
+                >
+                    <Drawer.Screen
+                        name="login"
+                        options={{
+                            drawerLabel: "Login",
+                            title: "Login",
+                            drawerIcon: () => (
+                                <SimpleLineIcons name="home" size={20} color="#808080" />
+                            )
+                        }}
+                    />
+
+                    <Drawer.Screen
+                        name="feedback"
+                        options={{
+                            drawerLabel: "Feedback",
+                            title: "Feedback",
+                            drawerIcon: () => (
+                                <MaterialIcons name="dashboard-customize" size={20} color="#808080" />
+                            )
+                        }}
+
+                    />
+
+                </Drawer>
+            </View>
+        </AppProvider>
     );
 }
 
