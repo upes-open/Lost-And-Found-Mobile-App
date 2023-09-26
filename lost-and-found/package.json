@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo-google-fonts/cookie": "^0.2.3",
     "@expo-google-fonts/merienda": "^0.2.3",
+    "@react-navigation/drawer": "^6.6.3",
     "axios": "^1.5.0",
     "expo": "^49.0.11",
     "expo-app-auth": "~11.1.0",

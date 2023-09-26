@@ -4,7 +4,7 @@ import styles from './feedback.style';
 import { AirbnbRating } from 'react-native-ratings';
 import image from "./feedback.png";
 
-const feedback = (props) => {
+const  Feedback = () => {
 
     const [details, setDetails] = useState({ email: "", feedback: "" });
     const host = "https://lost-and-found.cyclic.app";
@@ -91,4 +91,4 @@ const feedback = (props) => {
 
 
 
-export default feedback;
+export default Feedback;

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import styles from './login.style';
 import image from "../../assets/images/login_image.png";
+import { getUserData } from '../../context/AppContext';
 
 import * as WebBrowser from 'expo-web-browser';
 import {
@@ -14,7 +14,7 @@ import {
 
 WebBrowser.maybeCompleteAuthSession();
 
-const login = () => {
+const Login = () => {
 
     const discovery = useAutoDiscovery(
         'https://login.microsoftonline.com/91cc1fb6-1275-4acf-b3ea-c213ec16257b/v2.0',
@@ -23,7 +23,8 @@ const login = () => {
     const redirectUri = makeRedirectUri();
     const clientId = 'b985ca02-0481-409c-9b83-0a7248e1bc3e';
 
-    const [token, setToken] = useState(null);
+    const { userData, setUserData } = getUserData();
+    const [token, setToken] = useState(null)
 
     const [request, response, promptAsync] = useAuthRequest(
         {
@@ -34,11 +35,26 @@ const login = () => {
         discovery,
     );
 
+
+    const getUser = async () => {
+        const response = await fetch(`https://graph.microsoft.com/oidc/userinfo`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+        const data = await response.json();
+        console.log(data);
+        setUserData(data);
+    }
+
     useEffect(() => {
-      console.log(token);
-    
+        console.log(token);
+        if (token) {
+            getUser();
+        }
+
     }, [token]);
-    
+
 
     const handleSignIn = () => {
         promptAsync().then((codeResponse) => {
@@ -88,4 +104,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Login
