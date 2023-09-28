@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
-import { useCallback, useContext, useState } from "react";
-import { View, Text, Image, SafeAreaView } from "react-native";
+import { useCallback} from "react";
+import { View,SafeAreaView } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { Cookie_400Regular } from '@expo-google-fonts/cookie';

@@ -42,7 +42,7 @@ const DrawerMenu = () => {
                 style={{
                     fontSize: 14,
                     marginVertical: 6,
-                    fontStyle: "DMRegular",
+                    fontFamily: "DMRegular",
                     color: "#111"
                 }}
             >{userData?.email}</Text>
