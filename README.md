@@ -24,7 +24,7 @@ It is noticed that whenever we lose something on campus, we have to run to the L
 > The mobile app will be built using React Native and MongoDB as a database.
 
 ### To know about the workflow of the project and get an idea how the complete project will look like:
-[See project workflow](Workflow.md)
+[See project workflow](workflow.md)
 
 ### Tech Stack
 
