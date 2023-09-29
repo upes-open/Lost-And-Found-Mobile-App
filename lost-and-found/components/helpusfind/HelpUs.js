@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ImageBackground, FlatList } from 'react-native';
 import styles from './helpus.style.js';
 import loading from "./loading.gif";
 import no_image from "./no-image.png";
 import { useNavigation } from '@react-navigation/native';
+import head from "./head.png";
 
 const HelpUs = (props) => {
 
@@ -78,8 +79,15 @@ const HelpUs = (props) => {
 
     return (
         <View style={styles.container}>
+
+            <Image
+                source={head}
+                resizeMode="contain"
+                style={styles.backgroundImage}
+            />
+
             <Text >
-                <Text style={styles.heading}>Help Us</Text> <Text style={{ fontFamily:"DMBold", fontSize: 30 }}>Find</Text>
+                <Text style={styles.heading}>Help Us</Text> <Text style={{ fontFamily: "DMRegular", color: "grey", fontSize: 25 }}>Find</Text>
             </Text>
 
             {spinner ? (
@@ -104,6 +112,7 @@ const HelpUs = (props) => {
                     <Text style={{ marginTop: 20, fontSize: 16 }}>No items to display ...</Text>
                 </View>
             )}
+
         </View>
     );
 };

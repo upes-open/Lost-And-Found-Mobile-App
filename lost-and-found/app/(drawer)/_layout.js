@@ -1,6 +1,5 @@
-import { Stack } from "expo-router";
-import { useCallback} from "react";
-import { View,SafeAreaView } from "react-native";
+import { useCallback } from "react";
+import { View, SafeAreaView } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { Cookie_400Regular } from '@expo-google-fonts/cookie';
@@ -13,8 +12,7 @@ import DrawerMenu from "../../components/drawer/DrawerMenu";
 import {
     SimpleLineIcons,
     MaterialIcons,
-    MaterialCommunityIcons,
-    FontAwesome
+    Feather
 } from "@expo/vector-icons";
 
 
@@ -28,6 +26,7 @@ const Layout = () => {
         DMMedium: require("../../assets/fonts/DMSans-Medium.ttf"),
         DMRegular: require("../../assets/fonts/DMSans-Regular.ttf"),
         MontserratRegular: require("../../assets/fonts/Montserrat_400Regular.ttf"),
+        DMShoulders: require("../../assets/fonts/BigShouldersStencilDisplay_400Regular.ttf"),
         Cookie_400Regular,
         Merienda_400Regular,
     })
@@ -91,6 +90,18 @@ const Layout = () => {
                             title: "Feedback",
                             drawerIcon: () => (
                                 <MaterialIcons name="dashboard-customize" size={20} color="#808080" />
+                            )
+                        }}
+
+                    />
+
+                    <Drawer.Screen
+                        name="help_us_find"
+                        options={{
+                            drawerLabel: "Help Us Find",
+                            title: "HelpUs",
+                            drawerIcon: () => (
+                                <Feather name="help-circle" size={20} color="#808080" />
                             )
                         }}
 

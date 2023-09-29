@@ -6,7 +6,7 @@ import { DrawerToggleButton } from '@react-navigation/drawer';
 
 const index = () => {
     return (
-        <View style={{ flex: 1,}}>
+        <View style={{ flex: 1}}>
             <Drawer.Screen
                 options={{
                     headerShown: true,
