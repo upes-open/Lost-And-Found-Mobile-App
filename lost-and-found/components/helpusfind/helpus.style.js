@@ -4,12 +4,10 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    marginTop: -10,
     alignItems: "center",
     backgroundColor: "#98b7e5",
-    borderTopLeftRadius: 80,
     paddingVertical: 20,
-    marginTop: 0,
+    marginBottom: 20,
   },
 
   cardContainer: {
@@ -20,7 +18,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
     height: 400,
     backgroundColor: "#e9ecef",
-    borderRadius: 16,
+    borderRadius: 10,
 
     elevation: 20,
   },
@@ -40,7 +38,7 @@ const styles = StyleSheet.create({
   logoImage: {
     width: "110%",
     height: "110%",
-    borderRadius: 16,
+    borderRadius: 10,
     overflow: "hidden",
   },
 
@@ -89,10 +87,9 @@ const styles = StyleSheet.create({
   backgroundImage: {
     borderRadius: 20,
     position: "absolute",
-    right: 30,
-    top: -45,
-    height: 220,
-    width: 340,
+    right: -70,
+    top: -37,
+    height: 200,
 
   }
 

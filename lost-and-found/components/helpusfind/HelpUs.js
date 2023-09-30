@@ -45,6 +45,8 @@ const HelpUs = (props) => {
     const HelpUsItems = ({ itemImage, subcategory, desc }) => {
         return (
             <View style={styles.cardContainer}>
+
+
                 <View style={styles.logoContainer}>
                     <Image
                         source={itemImage ? { uri: `${host}/lostItemImages/${itemImage}` } : no_image}
@@ -79,40 +81,38 @@ const HelpUs = (props) => {
 
     return (
         <View style={styles.container}>
+                    <Image
+                        source={head}
+                        resizeMode="contain"
+                        style={styles.backgroundImage}
+                    />
 
-            <Image
-                source={head}
-                resizeMode="contain"
-                style={styles.backgroundImage}
-            />
+                    <Text style={{margin:"auto"}}>
+                        <Text style={styles.heading}>Help Us</Text> <Text style={{ fontFamily: "DMRegular", color: "grey", fontSize: 25 }}>Find</Text>
+                    </Text>
 
-            <Text >
-                <Text style={styles.heading}>Help Us</Text> <Text style={{ fontFamily: "DMRegular", color: "grey", fontSize: 25 }}>Find</Text>
-            </Text>
-
-            {spinner ? (
-                <View style={styles.spinnerContainer}>
-                    <Image source={loading} style={styles.spinner} />
-                </View>
-            ) : fetched ? (
-                <FlatList
-                    data={lostItems}
-                    horizontal
-                    renderItem={({ item }) => (
-                        <HelpUsItems
-                            itemImage={item?.itemImage}
-                            subcategory={item?.subcategory}
-                            desc={item?.description}
+                    {spinner ? (
+                        <View style={styles.spinnerContainer}>
+                            <Image source={loading} style={styles.spinner} />
+                        </View>
+                    ) : fetched ? (
+                        <FlatList
+                            data={lostItems}
+                            horizontal
+                            renderItem={({ item }) => (
+                                <HelpUsItems
+                                    itemImage={item?.itemImage}
+                                    subcategory={item?.subcategory}
+                                    desc={item?.description}
+                                />
+                            )}
+                            keyExtractor={(item) => item?._id} // Provide a unique key
                         />
+                    ) : (
+                        <View>
+                            <Text style={{ marginTop: 20, fontSize: 16 }}>No items to display ...</Text>
+                        </View>
                     )}
-                    keyExtractor={(item) => item?._id} // Provide a unique key
-                />
-            ) : (
-                <View>
-                    <Text style={{ marginTop: 20, fontSize: 16 }}>No items to display ...</Text>
-                </View>
-            )}
-
         </View>
     );
 };
