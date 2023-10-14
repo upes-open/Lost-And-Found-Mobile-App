@@ -44,6 +44,7 @@ const Layout = () => {
     return (
         <AppProvider>
             <View style={{ flex: 1, marginTop: -30 }}>
+
                 <Drawer
                     screenOptions={{
                         headerShown: false,
@@ -72,6 +73,18 @@ const Layout = () => {
                         }
                     }
                 >
+                    <Drawer.Screen
+                        name="home"
+                        options={{
+                            drawerLabel: "Home",
+                            title: "Home",
+                            drawerIcon: () => (
+                                <Feather name="help-circle" size={20} color="#808080" />
+                            )
+                        }}
+
+                    />
+
                     <Drawer.Screen
                         name="login"
                         options={{
@@ -106,6 +119,8 @@ const Layout = () => {
                         }}
 
                     />
+
+
 
                 </Drawer>
             </View>
