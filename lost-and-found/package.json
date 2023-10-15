@@ -12,6 +12,7 @@
     "@expo-google-fonts/cookie": "^0.2.3",
     "@expo-google-fonts/merienda": "^0.2.3",
     "@expo-google-fonts/poppins": "^0.2.3",
+    "@react-native-picker/picker": "^2.5.1",
     "@react-navigation/drawer": "^6.6.3",
     "@react-navigation/native": "^6.1.8",
     "@react-navigation/stack": "^6.3.18",
@@ -32,6 +33,8 @@
     "react-microsoft-login": "^2.0.1",
     "react-native": "0.72.5",
     "react-native-azure-auth": "^1.8.9",
+    "react-native-date-picker": "^4.2.6",
+    "react-native-document-picker": "^9.0.0",
     "react-native-dotenv": "^3.4.9",
     "react-native-gesture-handler": "~2.12.0",
     "react-native-msal": "^4.0.4",
@@ -43,7 +46,10 @@
     "react-native-svg": "^13.14.0",
     "react-native-web": "~0.19.6",
     "react-navigation": "^4.4.4",
-    "react-navigation-stack": "^2.10.4"
+    "react-navigation-stack": "^2.10.4",
+    "@react-native-community/datetimepicker": "7.2.0",
+    "expo-document-picker": "~11.5.4",
+    "expo-image-picker": "~14.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",

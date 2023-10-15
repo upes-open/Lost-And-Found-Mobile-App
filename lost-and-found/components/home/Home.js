@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import styles from './home.style';
 import lost from "./images/lost.png"
@@ -23,19 +23,19 @@ const Home = () => {
 
     const handlePress = (item) => {
         setselected(item);
-      };
+    };
 
     return (
 
         <View style={styles.container}>
 
-            <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 10 }}>
+            <View style={{ flexDirection: "row", justifyContent: "center", marginTop: -10 }}>
                 <Text style={{ color: "white", fontSize: 64, fontFamily: "Cookie_400Regular" }}>Lost</Text>
                 <Text style={{ fontSize: 38, }}> & </Text>
                 <Text style={{ color: "white", fontSize: 64, fontFamily: "Cookie_400Regular" }}>Found</Text>
             </View>
 
-            <View style={{paddingHorizontal: 20}}>
+            <View style={{ paddingHorizontal: 20, paddingTop: 10, }}>
                 <Text style={styles.desc}> We help you find lost items and reunite them with their owners. </Text>
             </View>
 
@@ -47,7 +47,7 @@ const Home = () => {
                     >
                         <TouchableOpacity
                             style={styles.mapContainer}
-                            onPress={ () => handlePress(route.id)}
+                            onPress={() => handlePress(route.id)}
                         >
                             <TouchableOpacity style={styles.logoContainer}>
                                 <Image
