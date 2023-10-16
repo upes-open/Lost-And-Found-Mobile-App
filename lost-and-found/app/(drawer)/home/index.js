@@ -8,7 +8,7 @@ const index = () => {
     return (
         <ImageBackground
             source={require('./bg.png')} // Specify the path to your background image
-            style={{ flex: 1 }}
+            style={{ flex: 1}}
         >
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={{ flex: 1 }}>
@@ -16,7 +16,7 @@ const index = () => {
                         options={{
                             headerShown: true,
                             title: "",
-                            headerStyle: { backgroundColor: "rgba(0, 0, 0, 0)" },
+                            headerStyle: { backgroundColor: "#872798" },
                             headerShadowVisible: false,
                             headerLeft: () => <DrawerToggleButton />
 

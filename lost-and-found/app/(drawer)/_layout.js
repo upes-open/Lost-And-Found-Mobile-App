@@ -80,7 +80,7 @@ const Layout = () => {
                             title: "Home",
                             drawerIcon: () => (
                                 <Feather name="help-circle" size={20} color="#808080" />
-                            )
+                            ),
                         }}
 
                     />
@@ -94,6 +94,18 @@ const Layout = () => {
                                 <SimpleLineIcons name="home" size={20} color="#808080" />
                             )
                         }}
+                    />
+
+                    <Drawer.Screen
+                        name="lostItems"
+                        options={{
+                            drawerLabel: "Lost Item Details",
+                            title: "LostItem",
+                            drawerIcon: () => (
+                                <MaterialIcons name="dashboard-customize" size={20} color="#808080" />
+                            )
+                        }}
+
                     />
 
                     <Drawer.Screen
