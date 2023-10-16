@@ -132,6 +132,16 @@ const Layout = () => {
 
                     />
 
+                    <Drawer.Screen
+                        name="foundItems"
+                        options={{
+                            drawerLabel: "Found Item Details",
+                            title: "FoundItem",
+                            drawerIcon: () => (
+                                <SimpleLineIcons name="home" size={20} color="#808080" />
+                            )
+                        }}
+                    />
 
 
                 </Drawer>

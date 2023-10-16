@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Platform, TouchableOpacity, Image, Pressable } from 'react-native';
+import { View, Text, TextInput, Platform, TouchableOpacity, Image, Pressable, Switch, } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import styles from "./lost.style"
+import styles from "./found.style"
 import DateTimePicker from '@react-native-community/datetimepicker'
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
 import dateImage from "./images/calender.png"
-import phoneImage from "./images/phone.png"
 import descriptionImage from "./images/description.png"
-import nameImage from "./images/name.png"
-import idImage from "./images/id.png"
 import placeImage from "./images/place.png"
+import ownerImage from "./images/owner.png"
 import itemimage from "./images/item.png"
+import detailsImage from "./images/details.png"
 
-const LostItem = () => {
+const FoundItem = () => {
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
-    const [phone, setPhone] = useState('');
-    const [name, setName] = useState('');
-    const [sapId, setSapId] = useState('');
     const [category, setCategory] = useState('');
     const [subcategory, setSubcategory] = useState('');
     const [itemName, setItemName] = useState('');
     const [itemImage, setItemImage] = useState(null);
     const [place, setPlace] = useState('');
     const [dateValue, setDateValue] = useState(new Date());
+    const [isIdentifiable, setIsIdentifiable] = useState(false);
+    const [ownerName, setOwnerName] = useState('');
+    const [details, setDetails] = useState('');
+
     const [isFormValid, setIsFormValid] = useState(false);
 
     const [open, setOpen] = useState(false);
@@ -33,9 +33,7 @@ const LostItem = () => {
 
         const isDescriptionValid = description.length > 0;
         const isDateValid = date.length > 0;
-        const isPhoneValid = phone.length > 0;
-        const isNameValid = name.length > 0;
-        const isSapIdValid = sapId.length > 0;
+        const isitemImage = true;
         const isCategoryValid = category.length > 0;
         const isSubcategoryValid = subcategory.length > 0;
         const isPlaceValid = place.length > 0;
@@ -43,36 +41,37 @@ const LostItem = () => {
         const formIsValid =
             isDescriptionValid &&
             isDateValid &&
-            isPhoneValid &&
-            isNameValid &&
-            isSapIdValid &&
             isCategoryValid &&
             isSubcategoryValid &&
+            isitemImage &&
             isPlaceValid;
 
         setIsFormValid(formIsValid);
     };
 
+    const handleSwitchChange = () => {
+        setIsIdentifiable((prevValue) => !prevValue);
+    };
+
     useEffect(() => {
         checkFormValidity();
 
-    }, [date, phone, description, category, subcategory, itemName, place, phone, sapId])
+    }, [date, description, category, subcategory, itemName, place, itemImage])
 
 
     const handleSubmit = async () => {
         const formData = new FormData();
         formData.append('description', description);
         formData.append('date', date);
-        formData.append('phone', phone);
-        formData.append('name', name);
-        formData.append('sapId', sapId);
         formData.append('category', category);
         formData.append('subcategory', subcategory);
         formData.append('itemName', itemName);
         formData.append('place', place);
-        formData.append('itemImage',)
+        formData.append('ownerName', ownerName);
+        formData.append('details', details);
+        formData.append('isIdentifiable', isIdentifiable);
 
-        if (itemImage) {
+        if(itemImage) {
             const uriParts = itemImage.split('.');
             const fileType = uriParts[uriParts.length - 1];
 
@@ -84,24 +83,24 @@ const LostItem = () => {
         }
 
         try {
-            const response = await axios.post('https://lost-and-found.cyclic.app/api/submitLostItem', formData, {
+            console.log(formData);
+            await axios.post('https://lost-and-found.cyclic.app/api/submitFoundItem', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
 
-            if (response.status === 200) {
-                setDescription('');
-                setDate('');
-                setPhone('');
-                setName('');
-                setSapId('');
-                setCategory('');
-                setSubcategory('');
-                setItemName('');
-                setItemImage(null);
-                setPlace('');
-            }
+            // Reset form fields after successful submission
+            setDescription('');
+            setDate('');
+            setCategory('');
+            setSubcategory('');
+            setItemName('');
+            setItemImage(null);
+            setPlace('');
+            setOwnerName('');
+            setDetails('');
+            setIsIdentifiable(false);
         } catch (error) {
             console.log('Error submitting form:', error);
         }
@@ -218,7 +217,7 @@ const LostItem = () => {
     return (
         <View style={styles.container}>
             <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingBottom: 10, }}>
-                <Text style={styles.heading}>Lost Item Details</Text>
+                <Text style={styles.heading}>Found Item Details</Text>
             </View>
 
             <View >
@@ -275,59 +274,20 @@ const LostItem = () => {
             </View>
 
             <View >
-                <Text style={styles.textinput}> Mobile No. </Text>
+                <Text style={styles.textinput}> Place you Lost the Item </Text>
                 <View style={styles.inputContainer}>
                     <View style={styles.imageContainer}>
                         <Image
-                            source={phoneImage}
-                            resizeMode="contain"
-                            style={{ width: "55%", height: "55%" }}
-                        />
-                    </View>
-
-                    <TextInput
-                        style={styles.input}
-                        value={phone}
-                        onChangeText={(text) => { setPhone(text); checkFormValidity(); }}
-                        placeholder="Enter mobile number"
-                    />
-                </View>
-            </View>
-
-            <View >
-                <Text style={styles.textinput}> Name </Text>
-                <View style={styles.inputContainer}>
-                    <View style={styles.imageContainer}>
-                        <Image
-                            source={nameImage}
+                            source={placeImage}
                             resizeMode="contain"
                             style={{ width: "55%", height: "55%" }}
                         />
                     </View>
                     <TextInput
                         style={styles.input}
-                        value={name}
-                        onChangeText={(text) => setName(text)}
-                        placeholder="Enter your name"
-                    />
-                </View>
-            </View>
-
-            <View >
-                <Text style={styles.textinput}> SAP ID </Text>
-                <View style={styles.inputContainer}>
-                    <View style={styles.imageContainer}>
-                        <Image
-                            source={idImage}
-                            resizeMode="contain"
-                            style={{ width: "55%", height: "55%" }}
-                        />
-                    </View>
-                    <TextInput
-                        style={styles.input}
-                        value={sapId}
-                        onChangeText={(text) => { setSapId(text); checkFormValidity(); }}
-                        placeholder="Enter your SAP ID"
+                        placeholder="Enter the place you lost the item"
+                        value={place}
+                        onChangeText={(text) => { setPlace(text); checkFormValidity(); }}
                     />
                 </View>
             </View>
@@ -389,25 +349,58 @@ const LostItem = () => {
                 </TouchableOpacity>
             </View>
 
-
-            <View >
-                <Text style={styles.textinput}> Place you Lost the Item </Text>
-                <View style={styles.inputContainer}>
-                    <View style={styles.imageContainer}>
-                        <Image
-                            source={placeImage}
-                            resizeMode="contain"
-                            style={{ width: "55%", height: "55%" }}
-                        />
-                    </View>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Enter the place you lost the item"
-                        value={place}
-                        onChangeText={(text) => { setPlace(text); checkFormValidity(); }}
+            <View>
+                <Text style={styles.textinput}> Is Identifiable ?</Text>
+                <View style={{ flex: 1, alignItems: "center", justifyContent: " center" }}>
+                    <Switch
+                        onValueChange={handleSwitchChange}
+                        value={isIdentifiable}
+                        style={{ transform: [{ scaleX: 1.5 }, { scaleY: 1.5 }] }}
                     />
                 </View>
             </View>
+
+            {isIdentifiable && (
+                <>
+                    <View >
+                        <Text style={styles.textinput}> Owner Name </Text>
+                        <View style={styles.inputContainer}>
+                            <View style={styles.imageContainer}>
+                                <Image
+                                    source={ownerImage}
+                                    resizeMode="contain"
+                                    style={{ width: "55%", height: "55%" }}
+                                />
+                            </View>
+                            <TextInput
+                                style={styles.input}
+                                value={ownerName}
+                                placeholder="Enter owner name"
+                                onChangeText={(text) => setOwnerName(text)}
+                            />
+                        </View>
+                    </View>
+
+                    <View >
+                        <Text style={styles.textinput}> Any other details </Text>
+                        <View style={styles.inputContainer}>
+                            <View style={styles.imageContainer}>
+                                <Image
+                                    source={detailsImage}
+                                    resizeMode="contain"
+                                    style={{ width: "55%", height: "55%" }}
+                                />
+                            </View>
+                            <TextInput
+                                style={styles.input}
+                                value={details}
+                                placeholder="Enter any other details"
+                                onChangeText={(text) => setDetails(text)}
+                            />
+                        </View>
+                    </View>
+                </>
+            )}
 
             {
                 !isFormValid
@@ -425,4 +418,4 @@ const LostItem = () => {
     );
 };
 
-export default LostItem;
+export default FoundItem;
