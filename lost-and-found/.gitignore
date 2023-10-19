@@ -17,3 +17,4 @@ web-build/
 # hidden
 components/GalleryPage/
 app/category/
+app/(drawer)/gallery/
