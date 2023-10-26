@@ -12,7 +12,8 @@ import DrawerMenu from "../../components/drawer/DrawerMenu";
 import {
     SimpleLineIcons,
     MaterialIcons,
-    Feather
+    Feather,
+    FontAwesome,
 } from "@expo/vector-icons";
 
 
@@ -73,13 +74,15 @@ const Layout = () => {
                         }
                     }
                 >
+                    
                     <Drawer.Screen
                         name="home"
                         options={{
                             drawerLabel: "Home",
                             title: "Home",
                             drawerIcon: () => (
-                                <Feather name="help-circle" size={20} color="#808080" />
+                                <MaterialIcons name="home" size={20} color="#808080" />
+
                             ),
                         }}
 
@@ -91,7 +94,7 @@ const Layout = () => {
                             drawerLabel: "Login",
                             title: "Login",
                             drawerIcon: () => (
-                                <SimpleLineIcons name="home" size={20} color="#808080" />
+                                <MaterialIcons name="login" size={20} color="#808080" />
                             )
                         }}
                     />
@@ -102,32 +105,22 @@ const Layout = () => {
                             drawerLabel: "Lost Item Details",
                             title: "LostItem",
                             drawerIcon: () => (
-                                <MaterialIcons name="dashboard-customize" size={20} color="#808080" />
+                                <MaterialIcons name="dashboard" size={20} color="#808080" />
                             )
                         }}
 
                     />
 
-                    <Drawer.Screen
-                        name="feedback"
-                        options={{
-                            drawerLabel: "Feedback",
-                            title: "Feedback",
-                            drawerIcon: () => (
-                                <MaterialIcons name="dashboard-customize" size={20} color="#808080" />
-                            )
-                        }}
-
-                    />
-
+                
                     <Drawer.Screen
                         name="help_us_find"
                         options={{
                             drawerLabel: "Help Us Find",
                             title: "HelpUs",
                             drawerIcon: () => (
-                                <Feather name="help-circle" size={20} color="#808080" />
-                            )
+                                <MaterialIcons name="help" size={20} color="#808080" />
+
+                                )
                         }}
 
                     />
@@ -138,13 +131,35 @@ const Layout = () => {
                             drawerLabel: "Found Item Details",
                             title: "FoundItem",
                             drawerIcon: () => (
-                                <SimpleLineIcons name="home" size={20} color="#808080" />
-                            )
+                                <FontAwesome name="search"size={20} color="#808080" />
+                                )
                         }}
                     />
 
-                    <Drawer.Screen
+           
 
+                    <Drawer.Screen  
+                        name="claimItems"
+                        options={{
+                            drawerLabel: "Claim Items",
+                            title: "Claim Items",
+                            drawerIcon: () => (
+                                <FontAwesome name="handshake-o" size={14} color="#808080" />                            )
+                        }}
+                    />
+                    <Drawer.Screen
+                        name="feedback"
+                        options={{
+                            drawerLabel: "Feedback",
+                            title: "Feedback",
+                            drawerIcon: () => (
+                                <MaterialIcons name="feedback" size={20} color="#808080" />
+
+                            )
+                        }}
+
+                    />
+                    <Drawer.Screen
                         name='profile_page'
                         options={{
                             drawerLabel: 'Profile',
@@ -156,7 +171,6 @@ const Layout = () => {
                     />
 
 
-                        
 
                 </Drawer>
             </View>
