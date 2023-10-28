@@ -143,6 +143,17 @@ const Layout = () => {
                         }}
                     />
 
+                    <Drawer.Screen
+                        name='profile_page'
+                        options={{
+                            drawerLabel: 'Profile',
+                            title: 'profile',
+                            drawerIcon: () => (
+                                <SimpleLineIcons name='user' size={20} color='#808080' />
+                            ),
+                        }}
+                    />
+
 
                 </Drawer>
             </View>
