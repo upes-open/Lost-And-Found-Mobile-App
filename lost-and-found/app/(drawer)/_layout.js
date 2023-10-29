@@ -43,7 +43,7 @@ const Layout = () => {
 
     return (
         <AppProvider>
-            <View style={{ flex: 1, marginTop: -30 }}>
+            <View style={{ flex: 1, marginTop: -30, backgroundColor: "#fff" }}>
 
                 <Drawer
                     screenOptions={{
@@ -144,6 +144,7 @@ const Layout = () => {
                     />
 
                     <Drawer.Screen
+
                         name='profile_page'
                         options={{
                             drawerLabel: 'Profile',
@@ -154,6 +155,8 @@ const Layout = () => {
                         }}
                     />
 
+
+                        
 
                 </Drawer>
             </View>
