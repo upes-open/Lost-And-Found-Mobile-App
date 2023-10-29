@@ -144,15 +144,19 @@ const Layout = () => {
                     />
 
                     <Drawer.Screen
-                        name="faqs"
+
+                        name='profile_page'
                         options={{
-                            drawerLabel: "FAQs",
-                            title: "FAQs",
+                            drawerLabel: 'Profile',
+                            title: 'profile',
                             drawerIcon: () => (
-                                <SimpleLineIcons name="user" size={20} color="#808080" />
-                            )
+                                <SimpleLineIcons name='user' size={20} color='#808080' />
+                            ),
                         }}
                     />
+
+
+                        
 
                 </Drawer>
             </View>
