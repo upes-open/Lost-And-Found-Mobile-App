@@ -43,7 +43,7 @@ const Layout = () => {
 
     return (
         <AppProvider>
-            <View style={{ flex: 1, marginTop: -30 }}>
+            <View style={{ flex: 1, marginTop: -30, backgroundColor: "#fff" }}>
 
                 <Drawer
                     screenOptions={{
@@ -143,6 +143,16 @@ const Layout = () => {
                         }}
                     />
 
+                    <Drawer.Screen
+                        name="faqs"
+                        options={{
+                            drawerLabel: "FAQs",
+                            title: "FAQs",
+                            drawerIcon: () => (
+                                <SimpleLineIcons name="user" size={20} color="#808080" />
+                            )
+                        }}
+                    />
 
                 </Drawer>
             </View>
