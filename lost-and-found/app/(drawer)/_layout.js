@@ -14,6 +14,7 @@ import {
     MaterialIcons,
     Feather,
     FontAwesome,
+    FontAwesome5
 } from "@expo/vector-icons";
 
 
@@ -118,9 +119,8 @@ const Layout = () => {
                             drawerLabel: "Help Us Find",
                             title: "HelpUs",
                             drawerIcon: () => (
-                                <MaterialIcons name="help" size={20} color="#808080" />
-
-                                )
+                               <MaterialIcons name="live-help" size={20} color="#808080" />
+                            )
                         }}
 
                     />
@@ -166,6 +166,16 @@ const Layout = () => {
                             title: 'profile',
                             drawerIcon: () => (
                                 <SimpleLineIcons name='user' size={20} color='#808080' />
+                            ),
+                        }}
+                    />
+                     <Drawer.Screen
+                        name='faqs'
+                        options={{
+                            drawerLabel: 'FAQs',
+                            title: 'Frequently Asked Questions',
+                            drawerIcon: () => (
+                                <FontAwesome5 name='question-circle' size={20} color='#808080' />
                             ),
                         }}
                     />
