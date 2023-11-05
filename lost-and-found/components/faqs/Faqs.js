@@ -4,29 +4,38 @@ import { View, Text, TouchableOpacity, FlatList, LayoutAnimation, UIManager, Pla
 const FaqData = [
   {
     id: 1,
-    question: 'What is React Native?',
-    answer: 'React Native is a framework for building mobile apps using React and JavaScript.',
+    question: 'How does the Lost and Found web app work?',
+    answer: 'Our Lost and Found web app provides a platform for users to report lost items and search for their missing possessions. Users can create a profile, submit details about their lost item, and browse through the found items listed on our platform. The app uses the entered details to identify potential matches and connect the owners with the finders.',
   },
   {
     id: 2,
-    question: 'How do I get started with React Native?',
-    answer: 'You can get started by installing Node.js, React Native CLI, and setting up an emulator or a physical device for testing.',
+    question: 'What should I do if I have lost something?',
+    answer: 'If you have lost something, log in to your account on our web app and report the lost item with as many details as possible. This helps increase the chances of a successful match. We recommend regularly checking our platform for updates on items gallery that match your description.',
   },
-  
   {
     id: 3,
-    question: 'Can I use third-party libraries with React Native?',
-    answer: 'Yes, React Native has a rich ecosystem of third-party libraries that can be used to enhance your app.',
+    question: 'Can I search for a lost item without creating an account?',
+    answer: 'No you cannot. Since this app is for UPES students only hence we need to log you in to verify you. Having an account also allows you to receive notifications and communicate with the finder of a potential match.',
   },
   {
     id: 4,
-    question: 'What is the difference between React and React Native?',
-    answer: 'React is a library for building web applications, while React Native is a framework for building mobile apps that use React under the hood.',
+    question: 'What should I do if I find a lost item?',
+    answer: 'If you find a lost item, please create an account on our web app and report the found item with accurate details. You have to upload a photo of the item to help with identification. This was you will help and owner find their lost item.',
   },
   {
     id: 5,
-    question: 'How can I handle navigation in React Native?',
-    answer: 'You can use libraries like React Navigation to handle navigation in your React Native app.',
+    question: 'How long does it usually take to find a lost item?',
+    answer: 'The time it takes to find a lost item can vary depending on various factors such as the uniqueness of the item, the accuracy of the description, and the availability of potential matches. We encourage users to regularly check our platform and update their lost item reports with any additional details.',
+  },
+  {
+    id: 6,
+    question: 'Is my personal information secure?',
+    answer: 'We take user privacy and data security seriously. We have implemented measures to safeguard your personal information. Only registered users with verified accounts have access to specific details of lost and found items. We recommend reviewing our privacy policy for more information on data protection.',
+  },
+  {
+    id: 7,
+    question: 'What if I have further questions or need assistance?',
+    answer: 'If you have any additional questions, need assistance, or encounter any issues with our web app, please reach out to our support team. You can contact us through the provided channels, such as email or the support section on our website.',
   },
 ];
 
