@@ -12,6 +12,7 @@ const FaqData = [
     question: 'How do I get started with React Native?',
     answer: 'You can get started by installing Node.js, React Native CLI, and setting up an emulator or a physical device for testing.',
   },
+  
   {
     id: 3,
     question: 'Can I use third-party libraries with React Native?',
