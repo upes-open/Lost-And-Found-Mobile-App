@@ -14,7 +14,4 @@ web-build/
 .DS_Store
 
 
-# hidden
-components/GalleryPage/
-app/category/
-app/(drawer)/gallery/
+

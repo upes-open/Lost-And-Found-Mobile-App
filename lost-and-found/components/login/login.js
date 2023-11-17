@@ -20,7 +20,7 @@ const Login = () => {
         'https://login.microsoftonline.com/91cc1fb6-1275-4acf-b3ea-c213ec16257b/v2.0',
     );
 
-    const redirectUri = makeRedirectUri();
+    const redirectUri = "com.yourcompany.yourapp://yourcustomuri";
     const clientId = 'b985ca02-0481-409c-9b83-0a7248e1bc3e';
 
     const { userData, setUserData } = getUserData();
