@@ -8,15 +8,15 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import { Stack, useRouter, useGlobalSearchParams } from "expo-router";
+import { useRouter, useGlobalSearchParams } from "expo-router";
 import demo from "./demo.jpeg";
+import { ChevronLeftIcon } from "react-native-heroicons/outline";
+import { useNavigation } from "@react-navigation/native";
 
 const Category = () => {
   const params = useGlobalSearchParams();
   const router = useRouter();
-
-  console.log("hello");
-  console.log(params.id);
+  const navigation = useNavigation();
 
   const categories = [
     {
@@ -51,24 +51,41 @@ const Category = () => {
 
   const handlePress = (category) => {
     router.push(`/items/ItemList?category=${category}`);
-  }
+  };
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        onPress={() => router.push("/gallery")}
+        style={{
+          left: 10,
+          top: 28,
+          position: "absolute",
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <ChevronLeftIcon size="20" strokeWidth={3} color="black" />
+          <Text>Back</Text>
+        </View>
+      </TouchableOpacity>
+
       <View style={styles.heading}>
-        <Text style={{ fontFamily: "DMBold", fontSize: 28 }}>
-          {" "}
-          Items Gallery{" "}
+        <Text style={{ fontFamily: "DMMedium", fontSize: 24 }}>
+          Select a Category
         </Text>
       </View>
 
       <ScrollView>
         <View
           style={{
-            flexDirection: "row",
-            // justifyContent: "center",
+            flexDirection: "column",
+            justifyContent: "center",
             paddingTop: 30,
-            paddingLeft: 20,
             flexWrap: "wrap",
           }}
         >
@@ -78,15 +95,10 @@ const Category = () => {
                 style={styles.mapContainer}
                 onPress={() => handlePress(category)}
               >
-                <TouchableOpacity style={styles.logoContainer}>
-                  <Image
-                    source={demo}
-                    resizeMode="contain"
-                    style={styles.image}
-                  />
-                </TouchableOpacity>
-
-                <View style={styles.overlay}>
+                <View style={styles.logoContainer}>
+                  <Image source={demo} style={styles.image} />
+                </View>
+                <View style={{ paddingLeft: 30 }}>
                   <Text style={styles.categoryText}>{category}</Text>
                 </View>
               </TouchableOpacity>

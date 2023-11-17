@@ -1,55 +1,57 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop:20,
+  },
 
-    container: {
-        flex: 1,
-    },
+  mapContainer: {
+    width: 310,
+    height: 130,
+    backgroundColor: "white",
+    borderRadius: 16,
+    alignItems: "center",
+    shadowColor: "black",
+    elevation: 6,
+    flexDirection: "row"
+  },
 
-    mapContainer: {
-        width: 140,
-        padding: 24,
-        height: 130,
-        backgroundColor: "white",
-        borderRadius: 16,
-        justifyContent: "center",
-        alignItems: "center",
-        shadowColor: "black",
-        elevation: 6,
-    },
+  logoContainer: {
+    width: 130,
+    height: 130,
+    padding:5,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
 
-    logoContainer: {
-        width: 50,
-        height: 50,
-        justifyContent: "center",
-        alignItems: "center",
-    },
+  heading: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: " center",
+    padding: 10,
+  },
 
-    heading: {
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: " center",
-    },
+  image: {
+    width: "100%",
+    height: "100%",
+    borderRadius: 10,
+  },
 
-    image: {
-        width: "100%",
-        height: "100%",
-        borderRadius: 10,
-    },
+  mapItem: {
+    marginHorizontal: 40,
+    marginVertical: 15,
+  },
 
-    mapItem: {
-        marginHorizontal: 20,
-        marginVertical: 20,
-    },
-
-    categoryText: {
-        fontSize: 14,
-        fontFamily: "DMBold",
-        color: "black",
-        marginTop: 10,
-        paddingHorizontal: -10,
-        textAlign: "center",
-    },
+  categoryText: {
+    fontSize: 15,
+    fontFamily: "DMMedium",
+    color: "black",
+    marginTop: 10,
+    paddingHorizontal: -10,
+    textAlign: "center",
+  },
 });
 
 export default styles;

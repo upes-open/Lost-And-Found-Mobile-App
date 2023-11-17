@@ -6,18 +6,21 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import Carousel from "react-native-snap-carousel";
-import { ArrowLeftIcon, ChevronLeftIcon } from 'react-native-heroicons/outline';
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { ArrowLeftIcon, ChevronLeftIcon } from "react-native-heroicons/outline";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import no_image from "./no-image.png";
 
-import { useGlobalSearchParams , useRouter,} from "expo-router";
+import { useGlobalSearchParams, useRouter } from "expo-router";
 
-const { width, height } = Dimensions.get("window");
 const host = "https://lost-and-found.cyclic.app";
+
+var { width, height } = Dimensions.get('window');
+
 
 export default function ItemList() {
   const params = useGlobalSearchParams();
@@ -66,16 +69,29 @@ export default function ItemList() {
         alignContent: "center",
       }}
     >
+
       <TouchableOpacity
         onPress={() => navigation.goBack()}
-        style={{marginLeft: 10}}
+        style={{
+          left: 10,
+          top: 40,
+          position: "absolute",
+        }}
       >
-        <ChevronLeftIcon size="28" strokeWidth={2.5} color="black"/>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <ChevronLeftIcon size="20" strokeWidth={3} color="black" />
+          <Text>Back</Text>
+        </View>
       </TouchableOpacity>
 
       <View
         style={{
-          margin: "auto",
+          marginTop: 20,
           justifyContent: "center",
           alignItems: "center",
         }}

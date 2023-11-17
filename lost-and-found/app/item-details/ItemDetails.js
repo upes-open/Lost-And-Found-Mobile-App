@@ -3,10 +3,18 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useGlobalSearchParams, useRouter } from "expo-router";
 import no_image from "./no-image.png";
 import loading from "./loading.gif";
+import { useNavigation } from "@react-navigation/native";
+import {
+  ChevronLeftIcon,
+  CalendarDaysIcon,
+  BookmarkIcon,
+} from "react-native-heroicons/outline";
+import { LinearGradient } from "expo-linear-gradient";
 
 const ItemDetails = () => {
   const params = useGlobalSearchParams();
   const id = params.id;
+  const navigation = useNavigation();
 
   const [fetched, setFetched] = useState(false);
   const [item, setItem] = useState(null); // Holds the item data
@@ -23,7 +31,6 @@ const ItemDetails = () => {
           },
         });
         const json = await response.json();
-        console.log("id",id);
         const foundItem = json.find((item) => item._id === id);
         setItem(foundItem);
         setFetched(true);
@@ -34,10 +41,31 @@ const ItemDetails = () => {
     fetchData();
   }, [id]);
 
+  const handleClaimItem = (id) => {};
+
   return (
     <View style={styles.container}>
-      {fetched ?     (
-        <View style={styles.cardWrapper}>
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={{
+          left: 10,
+          top: 35,
+          position: "absolute",
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <ChevronLeftIcon size="20" strokeWidth={3} color="black" />
+          <Text>Back</Text>
+        </View>
+      </TouchableOpacity>
+
+      {fetched ? (
+        <>
           <View style={styles.imageContainer}>
             <Image
               source={
@@ -48,25 +76,90 @@ const ItemDetails = () => {
               style={styles.itemImage}
               resizeMode="cover"
             />
-          </View>
-          <View style={styles.detailsContainer}>
-            <Text style={styles.title}>{item?.subcategory}</Text>
-            <Text style={styles.description}>{item?.description}</Text>
-            <View style={styles.info}>
-              <Text>Place: {item?.place}</Text>
-              <Text>Date: {item?.date}</Text>
-            </View>
-            <TouchableOpacity
-              title="Claim Item"
-              onPress={() => handleClaimItem(item?._id)}
+            <LinearGradient
+              colors={[
+                "transparent",
+                "rgba(23, 23, 23, 0.8)",
+                "rgba(23, 23, 23, 1)",
+              ]}
+              style={{
+                width: 400,
+                height: 120,
+                position: "absolute",
+                bottom: 0,
+              }}
+              start={{ x: 0.5, y: 0 }}
+              end={{ x: 0.5, y: 1 }}
             />
           </View>
-        </View>
+
+          <View
+            style={{
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 20,
+            }}
+          >
+            <Text style={{ fontFamily: "DMMedium", fontSize: 24 }}>
+              {item?.subcategory}
+            </Text>
+            <Text
+              style={{
+                fontFamily: "DMMedium",
+                fontSize: 16,
+                color: "#83829A",
+                padding: 20,
+              }}
+            >
+              {item?.description}
+            </Text>
+          </View>
+
+          <View style={{ marginLeft: 20 }}>
+            <View
+              style={{
+                paddingVertical: 15,
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <BookmarkIcon size="32" strokeWidth={1} color="red" />
+              <Text style={{ paddingLeft: 10, fontFamily: "DMRegular" }}>
+                Place: {item?.place}
+              </Text>
+            </View>
+
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <CalendarDaysIcon size="32" strokeWidth={1} color="red" />
+              <Text style={{ paddingLeft: 10, fontFamily: "DMRegular" }}>
+                Date: {item?.date}
+              </Text>
+            </View>
+          </View>
+
+          <View
+            style={{
+              justifyContent: "center",
+              flexDirection: "row",
+              marginTop: 10,
+            }}
+          >
+            <TouchableOpacity
+              style={styles.loginBtn}
+              onPress={() => handleClaimItem(item?._id)}
+            >
+              <Text style={styles.loginBtnText}>Claim Item</Text>
+            </TouchableOpacity>
+          </View>
+        </>
       ) : (
-        <View style={{ width: 0 }}>
+        <View
+          style={{ flexDirection: "row", justifyContent: "center" }}
+        >
           <Image
             source={loading}
-            style={{ marginTop: 50, height: 50, width: 50 }}
+            style={{ marginTop: 50, height: 30, width: 30 }}
           />
         </View>
       )}
@@ -77,40 +170,31 @@ const ItemDetails = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  cardWrapper: {
-    margin: 10,
-    padding: 10,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: "#ccc",
-    backgroundColor: "#fff",
   },
   imageContainer: {
     alignItems: "center",
+    marginTop: 70,
   },
   itemImage: {
-    width: 200,
-    height: 200,
+    width: 400,
+    height: 300,
     borderRadius: 5,
   },
-  detailsContainer: {
-    marginTop: 10,
+  loginBtn: {
+    width: "40%",
+    // height: "16%",
+    backgroundColor: "#9c27b0",
+    borderRadius: 10,
+    justifyContent: "center",
     alignItems: "center",
+    padding: 12,
+    margin: 20,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-  description: {
+
+  loginBtnText: {
     fontSize: 16,
-    marginBottom: 10,
-  },
-  info: {
-    marginBottom: 10,
+    color: "#F3F4F8",
+    fontFamily: "DMRegular",
   },
 });
 

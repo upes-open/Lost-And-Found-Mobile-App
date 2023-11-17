@@ -56,8 +56,8 @@ const Home = () => {
 
       <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
         <Text style={styles.desc}>
-          {" "}
-          We help you find lost items and reunite them with their owners.{" "}
+        
+          We help you find lost items and reunite them with their owners.
         </Text>
       </View>
 
