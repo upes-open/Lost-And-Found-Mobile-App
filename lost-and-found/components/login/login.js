@@ -29,10 +29,12 @@ const Login = () => {
     "https://login.microsoftonline.com/91cc1fb6-1275-4acf-b3ea-c213ec16257b/v2.0"
   );
 
+
   const redirectUri = makeRedirectUri({
     scheme: undefined,
     path: "/(drawer)/home",
   });
+
 
   const clientId = "9e01da48-54e9-4470-9513-cfec59568426";
 
