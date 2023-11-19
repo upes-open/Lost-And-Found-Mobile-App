@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const deleteRoute = require("./routes/deleteRoute.js");
 const usersRoute = require("./routes/usersRoute.js");
 const cors = require("cors");
+const { db } = require("./db.js");
 
 app.use(express.json()); // Add this line to enable JSON parsing
 
@@ -16,13 +17,9 @@ app.use(
   })
 );
 
-mongoose
-  .connect(
-    "mongodb+srv://priyanshu:1234@lost-and-found.mczrz51.mongodb.net/LostandFound"
-  )
-  .then(() => {
-    console.log("db connected");
-  });
+const connectionString = process.env.MONGO_URI;
+
+db(connectionString);
 
 app.post("/upload", uploadRoute);
 app.use("/delete", deleteRoute);
