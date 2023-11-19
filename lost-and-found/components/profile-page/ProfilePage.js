@@ -1,36 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import styles from './profile.style';
-import axios from 'axios';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Image,
-  Pressable,
-  Dimensions,
-} from 'react-native';
+import React, { useState } from "react";
+import { Image, Pressable, Text, View } from "react-native";
+import { useAuth } from "../../context/AuthContext";
+import styles from "./profile.style";
 
 const ProfilePage = () => {
   const [lostItems, setLostItems] = useState(5);
   const [foundItems, setFoundItems] = useState(10);
-  const [user, setUser] = useState({
-    name: 'Test User',
-    email: 'test123@gmail.com',
-    profileUrl: '',
-  });
 
-  useEffect(() => {
-    const getUser = async () => {
-      const apiUrl = ''; // provide endpoint to fetch user data
-      const response = await axios.get(apiUrl);
-
-      setUser(response.data);
-    };
-    getUser();
-  }, []);
-
-  const handleLogout = () => {};
+  const { auth: user, logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <View style={styles.container}>
@@ -40,11 +20,11 @@ const ProfilePage = () => {
           <View style={styles.profileImageContainer}>
             <Image
               style={styles.profileImage}
-              source={user.profileUrl || require('./profile.jpg')}
+              source={require("./profile.jpg")}
             />
           </View>
           <Text style={styles.userName}>{user.name}</Text>
-          <Text style={styles.userEmail}>{user.email}</Text>
+          <Text style={styles.userEmail}>{user.unique_name}</Text>
         </View>
         {/* banner section end */}
 
