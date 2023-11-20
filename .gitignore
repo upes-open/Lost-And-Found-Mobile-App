@@ -1,0 +1,5 @@
+backend/node_modules
+backend/.env
+
+lost-and-found/node_modules
+lost-and-found/.env
