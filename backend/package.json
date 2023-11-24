@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "server-start": "node index.js"
+    "server-start": "nodemon index.js"
   },
   "dependencies": {
     "cloudinary": "^1.41.0",
@@ -13,6 +13,7 @@
     "express": "^4.18.2",
     "mongoose": "^8.0.1",
     "multer": "^1.4.5-lts.1",
-    "multer-storage-cloudinary": "^4.0.0"
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemon": "^3.0.1"
   }
 }
