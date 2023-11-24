@@ -6,6 +6,7 @@ const uploadRoute = require("./routes/uploadRoute.js");
 const deleteRoute = require("./routes/deleteRoute.js");
 const usersRoute = require("./routes/usersRoute.js");
 const lostItemRoute = require("./routes/lostItemRoute.js");
+const foundRoute = require("./routes/foundRoute.js");
 const cors = require("cors");
 const { db } = require("./db.js");
 const feedbackRoute = require("./routes/feedbackRoute.js");
@@ -23,9 +24,10 @@ app.post("/upload", uploadRoute);
 app.use("/delete", deleteRoute);
 app.use("/api/lost", lostItemRoute);
 app.use("/api/feedback", feedbackRoute);
+app.use("/api/found", foundRoute);
 
 
-app.post("/users", usersRoute);
+app.use("/users", usersRoute);
 
 // app.use("/*", (req, res, next) => {
 //   res.json({

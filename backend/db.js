@@ -9,4 +9,4 @@ const db = async (connectionString) => {
   }
 };
 
-module.exports = { db };
+module.exports = { db } ;
