@@ -9,7 +9,7 @@ const host = "https://lost-and-found.cyclic.app";
 router.post('/', async (req, res) => {
     const db = mongoose.connection; // Corrected the spelling
     const feedback = req.body;
-    const collection = db.collection('feedback');
+    const collection = db.collection('feedbacks');
 
     try {
         await collection.insertOne({

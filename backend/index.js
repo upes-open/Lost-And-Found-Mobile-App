@@ -7,6 +7,7 @@ const deleteRoute = require("./routes/deleteRoute.js");
 const usersRoute = require("./routes/usersRoute.js");
 const lostItemRoute = require("./routes/lostItemRoute.js");
 const foundRoute = require("./routes/foundRoute.js");
+const getlostItemRoute = require("./routes/getlostItemRoute.js");
 const cors = require("cors");
 const { db } = require("./db.js");
 const feedbackRoute = require("./routes/feedbackRoute.js");
@@ -25,6 +26,7 @@ app.use("/delete", deleteRoute);
 app.use("/api/lost", lostItemRoute);
 app.use("/api/feedback", feedbackRoute);
 app.use("/api/found", foundRoute);
+app.use("/api/get-lost-items",getlostItemRoute);
 
 
 app.use("/users", usersRoute);
