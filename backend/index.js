@@ -10,6 +10,8 @@ const foundRoute = require("./routes/foundRoute.js");
 const getlostItemRoute = require("./routes/getlostItemRoute.js");
 const collectedItemRoute = require("./routes/collectedItemRoute.js");
 const claimItemRoute = require("./routes/claimItemRoute.js");
+const getAllFoundItems = require("./routes/getAllFoundItemsRoute.js");
+const getAllLostItems = require("./routes/getAllLostItemsRoute.js");
 const cors = require("cors");
 const { db } = require("./db.js");
 const feedbackRoute = require("./routes/feedbackRoute.js");
@@ -31,6 +33,9 @@ app.use("/api/found", foundRoute);
 app.use("/api/get-lost-items",getlostItemRoute);
 app.use("/api/collected-items", collectedItemRoute);
 app.use("/api/claim-items", claimItemRoute);
+app.use("/api/get-all-lost-items", getAllLostItems);
+app.use("/api/get-all-found-items", getAllFoundItems);
+
 
 app.use("/users", usersRoute);
 

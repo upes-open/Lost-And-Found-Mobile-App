@@ -8,7 +8,7 @@ const db = mongoose.connection;
 router.post('/', async (req, res) => {
   try {
     // Extract data from the request
-    const { lostItemId, collectorName, collectorSapId, collectorNumber, collectoremail } = req.body;
+    const { lostItemId, collectorName, collectorSapId, collectorNumber, collectoremail , collectorBranch} = req.body;
 
     // Validate the presence of required fields
     if (!lostItemId || !collectorName || !collectorSapId || !collectorNumber || !collectoremail) {
@@ -52,6 +52,7 @@ router.post('/', async (req, res) => {
       collectorSapId: collectorSapId,
       collectorNumber: collectorNumber,
       collectoremail: collectoremail,
+      collectorBranch: collectorBranch,
       collectionTime: new Date().toISOString(),
     };
 

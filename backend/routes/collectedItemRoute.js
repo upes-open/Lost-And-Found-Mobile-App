@@ -21,6 +21,7 @@ router.post('/', async (req, res) => {
         collectorSapId,
         collectorNumber,
         collectoremail,
+        collectorBranch,
         collectionTime
     } = req.body;
     try {
@@ -40,6 +41,7 @@ router.post('/', async (req, res) => {
             collectorSapId: collectorSapId,
             collectorNumber: collectorNumber,
             collectoremail: collectoremail,
+            collectorBranch :collectorBranch,
             collectionTime: collectionTime
         });
 
