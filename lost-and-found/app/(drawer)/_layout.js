@@ -1,20 +1,14 @@
-import { useCallback } from "react";
 import { View, SafeAreaView } from "react-native";
-import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
-import { Cookie_400Regular } from "@expo-google-fonts/cookie";
-import { Merienda_400Regular } from "@expo-google-fonts/merienda";
 import { Drawer } from "expo-router/drawer";
 import { DrawerItemList } from "@react-navigation/drawer";
 import { AppProvider } from "../../context/AppContext";
 import DrawerMenu from "../../components/drawer/DrawerMenu";
-import { ClerkProvider } from "@clerk/clerk-expo";
 import {
   SimpleLineIcons,
   MaterialIcons,
-  Feather,
   FontAwesome,
   FontAwesome5,
+  MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import { AuthProvider, useAuth } from "../../context/AuthContext";
 import AppLoader from "../../context/AppLoader";
@@ -72,23 +66,23 @@ const Layout = () => {
               />
 
               <Drawer.Screen
+                name="profile_page"
+                options={{
+                  drawerLabel: "Profile",
+                  title: "profile",
+                  drawerIcon: () => (
+                    <SimpleLineIcons name="user" size={20} color="#808080" />
+                  ),
+                }}
+              />
+
+              <Drawer.Screen
                 name="lostItems"
                 options={{
                   drawerLabel: "Lost Item Details",
                   title: "LostItem",
                   drawerIcon: () => (
                     <MaterialIcons name="dashboard" size={20} color="#808080" />
-                  ),
-                }}
-              />
-
-              <Drawer.Screen
-                name="help_us_find"
-                options={{
-                  drawerLabel: "Help Us Find",
-                  title: "HelpUs",
-                  drawerIcon: () => (
-                    <MaterialIcons name="live-help" size={20} color="#808080" />
                   ),
                 }}
               />
@@ -105,15 +99,31 @@ const Layout = () => {
               />
 
               <Drawer.Screen
-                name="claimItems"
+                name="gallery"
                 options={{
-                  drawerLabel: "Claim Items",
-                  title: "Claim Items",
+                  drawerLabel: "Gallery Page",
+                  title: "gallery page",
                   drawerIcon: () => (
-                    <FontAwesome name="handshake-o" size={14} color="#808080" />
+                    <MaterialCommunityIcons
+                      name="view-gallery"
+                      size={20}
+                      color="#808080"
+                    />
                   ),
                 }}
               />
+
+              <Drawer.Screen
+                name="help_us_find"
+                options={{
+                  drawerLabel: "Help Us Find",
+                  title: "HelpUs",
+                  drawerIcon: () => (
+                    <MaterialIcons name="live-help" size={20} color="#808080" />
+                  ),
+                }}
+              />
+
               <Drawer.Screen
                 name="feedback"
                 options={{
@@ -121,16 +131,6 @@ const Layout = () => {
                   title: "Feedback",
                   drawerIcon: () => (
                     <MaterialIcons name="feedback" size={20} color="#808080" />
-                  ),
-                }}
-              />
-              <Drawer.Screen
-                name="profile_page"
-                options={{
-                  drawerLabel: "Profile",
-                  title: "profile",
-                  drawerIcon: () => (
-                    <SimpleLineIcons name="user" size={20} color="#808080" />
                   ),
                 }}
               />

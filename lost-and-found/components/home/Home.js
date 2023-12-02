@@ -7,22 +7,19 @@ import itemsgallery from "./images/itemsgallery.png";
 import helpusfind from "./images/helpusfind.png";
 import feedback from "./images/feedback.png";
 import faq from "./images/faq.png";
+import { useRouter, useGlobalSearchParams } from "expo-router";
 
 const Home = () => {
   const routes = [
-    { id: 1, name: "Report Lost Item", image: lost },
-    { id: 2, name: "Report Found Item", image: found },
-    { id: 3, name: "Items Gallery", image: itemsgallery },
-    { id: 4, name: "Help Us Find", image: helpusfind },
-    { id: 5, name: "Feedback", image: feedback },
-    { id: 6, name: "FAQ", image: faq },
+    { id: 1, name: "Report Lost Item", image: lost, routeLink: "/lostItems" },
+    { id: 2, name: "Report Found Item", image: found, routeLink: "/foundItems"  },
+    { id: 3, name: "Items Gallery", image: itemsgallery, routeLink: "/gallery"  },
+    { id: 4, name: "Help Us Find", image: helpusfind, routeLink: "/help_us_find"  },
+    { id: 5, name: "Feedback", image: feedback , routeLink: "/feedback" },
+    { id: 6, name: "FAQ", image: faq , routeLink: "/faqs" },
   ];
 
-  const [selected, setselected] = useState(null);
-
-  const handlePress = (item) => {
-    setselected(item);
-  };
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
@@ -73,15 +70,15 @@ const Home = () => {
           <View key={route.id} style={styles.mapItem}>
             <TouchableOpacity
               style={styles.mapContainer}
-              onPress={() => handlePress(route.id)}
+              onPress={() => router.push(route.routeLink)}
             >
-              <TouchableOpacity style={styles.logoContainer}>
+              <View style={styles.logoContainer}>
                 <Image
                   source={route.image}
                   resizeMode="contain"
                   style={styles.image}
                 />
-              </TouchableOpacity>
+              </View>
               <Text style={styles.categoryText}>{route.name}</Text>
             </TouchableOpacity>
           </View>
