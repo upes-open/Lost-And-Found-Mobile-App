@@ -1,15 +1,32 @@
 import React from "react";
 import styles from "./gallery.style.js";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-} from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
 import { useRouter, useGlobalSearchParams } from "expo-router";
 import demo from "./demo.jpeg";
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
+
+// import images
+import collegeId from "./images/collegeID.jpg";
+import atmCard from "./images/atmCard.jpg";
+import driverLicense from "./images/driverLicense.jpg";
+import aadharCard from "./images/aadharCard.jpg";
+import anyOtherCard from "./images/anyOtherCard.jpg";
+
+import notebook from "./images/notebook.jpg";
+import book from "./images/book.jpg";
+import novel from "./images/novel.jpg";
+import anyOtherBook from "./images/anyOtherBook.jpg";
+
+import mobilePhone from "./images/mobilePhone.jpg";
+import laptop from "./images/laptop.jpg";
+import smartWatch from "./images/smartWatch.jpg";
+import charger from "./images/charger.jpg";
+import anyOtherDevice from "./images/anyOtherDevice.jpg";
+
+import bottle from "./images/bottle.jpg";
+import wallet from "./images/wallet.jpg";
+import bag from "./images/bag.jpg";
+import anyOtherItem from "./images/anyOtherItem.jpg";
 
 const Category = () => {
   const params = useGlobalSearchParams();
@@ -19,30 +36,40 @@ const Category = () => {
     {
       name: "Cards",
       subcategories: [
-        "College ID Card",
-        "ATM Card",
-        "Driver's License",
-        "Aadhar Card",
-        "Any Other Card",
+        { name: "College ID Card", image: collegeId },
+        { name: "ATM Card", image: atmCard },
+        { name: "Driver's License", image: driverLicense },
+        { name: "Aadhar Card", image: aadharCard },
+        { name: "Any Other Card", image: anyOtherCard },
       ],
     },
     {
       name: "Books",
-      subcategories: ["Notebook", "Book", "Novel", "Any Other Book"],
+      subcategories: [
+        { name: "Notebook", image: notebook },
+        { name: "Book", image: book },
+        { name: "Novel", image: novel },
+        { name: "Any Other Book", image: anyOtherBook },
+      ],
     },
     {
       name: "Electronic Devices",
       subcategories: [
-        "Mobile Phone",
-        "Laptop",
-        "Smart Watch",
-        "Charger",
-        "Any Other Device",
+        { name: "Mobile Phone", image: mobilePhone },
+        { name: "Laptop", image: laptop },
+        { name: "Smart Watch", image: smartWatch },
+        { name: "Charger", image: charger },
+        { name: "Any Other Device", image: anyOtherDevice },
       ],
     },
     {
       name: "Others",
-      subcategories: ["Bottle", "Wallet", "Bag", "Any other Item"],
+      subcategories: [
+        { name: "Bottle", image: bottle },
+        { name: "Wallet", image: wallet },
+        { name: "Bag", image: bag },
+        { name: "Any other Item", image: anyOtherItem },
+      ],
     },
   ];
 
@@ -96,7 +123,7 @@ const Category = () => {
                   <Image source={demo} style={styles.image} />
                 </View>
                 <View style={{ paddingLeft: 30 }}>
-                  <Text style={styles.categoryText}>{category}</Text>
+                  <Text style={styles.categoryText}>{category.name}</Text>
                 </View>
               </TouchableOpacity>
             </View>
