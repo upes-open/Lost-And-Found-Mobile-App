@@ -6,14 +6,17 @@ const port = process.env.PORT || 3333;
 // const deleteRoute = require("./routes/deleteRoute.js");
 // const usersRoute = require("./routes/usersRoute.js");
 // const lostItemRoute = require("./routes/lostItemRoute.js");
+
 const submitFoundItem = require("./routes/submitFoundItem");
 const submitLostItem = require("./routes/submitLostItem");
+
 // const getlostItemRoute = require("./routes/getlostItemRoute.js");
 // const collectedItemRoute = require("./routes/collectedItemRoute.js");
 // const claimItemRoute = require("./routes/claimItemRoute.js");
 // const getAllFoundItems = require("./routes/getAllFoundItemsRoute.js");
 // const getAllLostItems = require("./routes/getAllLostItemsRoute.js");
 const cors = require("cors");
+const db = require("./db");
 // const feedbackRoute = require("./routes/feedbackRoute.js");
 
 const mongoose = require("mongoose");
@@ -21,15 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// Set up MongoDB connection
-const MONGODB_URI =
-  "mongodb+srv://admin:helloadmin@lost-and-found.mczrz51.mongodb.net/LostandFound?retryWrites=true&w=majority"; // Replace with your MongoDB connection string
-mongoose.connect(MONGODB_URI);
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", () => {
-  console.log("Connected to MongoDB");
-});
+db();
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

@@ -15,6 +15,7 @@ const ItemDetails = () => {
   const params = useGlobalSearchParams();
   const id = params.id;
   const navigation = useNavigation();
+  const router= useRouter();
 
   const [fetched, setFetched] = useState(false);
   const [item, setItem] = useState(null); // Holds the item data
@@ -41,7 +42,9 @@ const ItemDetails = () => {
     fetchData();
   }, [id]);
 
-  const handleClaimItem = (id) => {};
+  const handleClaimItem = (id) => {
+    router.push(`/claim-item/ClaimItem?id=${id}`);
+  };
 
   return (
     <View style={styles.container}>
@@ -154,9 +157,7 @@ const ItemDetails = () => {
           </View>
         </>
       ) : (
-        <View
-          style={{ flexDirection: "row", justifyContent: "center" }}
-        >
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <Image
             source={loading}
             style={{ marginTop: 50, height: 30, width: 30 }}

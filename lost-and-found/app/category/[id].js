@@ -3,7 +3,6 @@ import styles from "./gallery.style.js";
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   ScrollView,
   Image,
@@ -11,12 +10,10 @@ import {
 import { useRouter, useGlobalSearchParams } from "expo-router";
 import demo from "./demo.jpeg";
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
-import { useNavigation } from "@react-navigation/native";
 
 const Category = () => {
   const params = useGlobalSearchParams();
   const router = useRouter();
-  const navigation = useNavigation();
 
   const categories = [
     {

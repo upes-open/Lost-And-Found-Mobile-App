@@ -13,7 +13,6 @@ import { Picker } from "@react-native-picker/picker";
 import styles from "./found.style";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as ImagePicker from "expo-image-picker";
-import axios from "axios";
 import dateImage from "./images/calender.png";
 import descriptionImage from "./images/description.png";
 import placeImage from "./images/place.png";
@@ -99,17 +98,6 @@ const FoundItem = () => {
   };
 
   const handleSubmit = async () => {
-    // const formData = new FormData();
-    // formData.append("description", description);
-    // formData.append("date", date);
-    // formData.append("category", category);
-    // formData.append("subcategory", subcategory);
-    // formData.append("itemName", itemName);
-    // formData.append("place", place);
-    // formData.append("ownerName", ownerName);
-    // formData.append("details", details);
-    // formData.append("isIdentifiable", isIdentifiable);
-
     let secure_url;
     if (itemImage) {
       secure_url = await uploadImage(itemImage);

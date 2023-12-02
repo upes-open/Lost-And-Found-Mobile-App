@@ -105,16 +105,6 @@ const Layout = () => {
               />
 
               <Drawer.Screen
-                name="claimItems"
-                options={{
-                  drawerLabel: "Claim Items",
-                  title: "Claim Items",
-                  drawerIcon: () => (
-                    <FontAwesome name="handshake-o" size={14} color="#808080" />
-                  ),
-                }}
-              />
-              <Drawer.Screen
                 name="feedback"
                 options={{
                   drawerLabel: "Feedback",
