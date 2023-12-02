@@ -30,13 +30,10 @@ const Login = () => {
   );
 
 
-  const redirectUri = makeRedirectUri({
-    scheme: undefined,
-    path: "/(drawer)/home",
-  });
+  const redirectUri = makeRedirectUri();
 
 
-  const clientId = "9e01da48-54e9-4470-9513-cfec59568426";
+  const clientId = "b985ca02-0481-409c-9b83-0a7248e1bc3e";
 
   const [request, , promptAsync] = useAuthRequest(
     {

@@ -2,48 +2,54 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3333;
-const uploadRoute = require("./routes/uploadRoute.js");
-const deleteRoute = require("./routes/deleteRoute.js");
-const usersRoute = require("./routes/usersRoute.js");
-const lostItemRoute = require("./routes/lostItemRoute.js");
-const foundRoute = require("./routes/foundRoute.js");
-const getlostItemRoute = require("./routes/getlostItemRoute.js");
-const collectedItemRoute = require("./routes/collectedItemRoute.js");
-const claimItemRoute = require("./routes/claimItemRoute.js");
-const getAllFoundItems = require("./routes/getAllFoundItemsRoute.js");
-const getAllLostItems = require("./routes/getAllLostItemsRoute.js");
+// const uploadRoute = require("./routes/uploadRoute.js");
+// const deleteRoute = require("./routes/deleteRoute.js");
+// const usersRoute = require("./routes/usersRoute.js");
+// const lostItemRoute = require("./routes/lostItemRoute.js");
+const submitFoundItem = require("./routes/submitFoundItem");
+const submitLostItem = require("./routes/submitLostItem");
+// const getlostItemRoute = require("./routes/getlostItemRoute.js");
+// const collectedItemRoute = require("./routes/collectedItemRoute.js");
+// const claimItemRoute = require("./routes/claimItemRoute.js");
+// const getAllFoundItems = require("./routes/getAllFoundItemsRoute.js");
+// const getAllLostItems = require("./routes/getAllLostItemsRoute.js");
 const cors = require("cors");
-const { db } = require("./db.js");
-const feedbackRoute = require("./routes/feedbackRoute.js");
-const connectionString = process.env.MONGO_URI;
+// const feedbackRoute = require("./routes/feedbackRoute.js");
 
-app.use(express.json()); // Add this line to enable JSON parsing
-db(connectionString);
+const mongoose = require("mongoose");
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
-app.post("/upload", uploadRoute);
-app.use("/delete", deleteRoute);
-app.use("/api/lost", lostItemRoute);
-app.use("/api/feedback", feedbackRoute);
-app.use("/api/found", foundRoute);
-app.use("/api/get-lost-items",getlostItemRoute);
-app.use("/api/collected-items", collectedItemRoute);
-app.use("/api/claim-items", claimItemRoute);
-app.use("/api/get-all-lost-items", getAllLostItems);
-app.use("/api/get-all-found-items", getAllFoundItems);
+// Set up MongoDB connection
+const MONGODB_URI =
+  "mongodb+srv://admin:helloadmin@lost-and-found.mczrz51.mongodb.net/LostandFound?retryWrites=true&w=majority"; // Replace with your MongoDB connection string
+mongoose.connect(MONGODB_URI);
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => {
+  console.log("Connected to MongoDB");
+});
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
-app.use("/users", usersRoute);
+// app.post("/upload", uploadRoute);
+// app.use("/delete", deleteRoute);
+// app.use("/api/lost", lostItemRoute);
+// app.use("/api/feedback", feedbackRoute);
+// app.use("/api/found", foundRoute);
+// app.use("/api/get-lost-items", getlostItemRoute);
+// app.use("/api/collected-items", collectedItemRoute);
+// app.use("/api/claim-items", claimItemRoute);
+// app.use("/api/get-all-lost-items", getAllLostItems);
+// app.use("/api/get-all-found-items", getAllFoundItems);
 
-// app.use("/*", (req, res, next) => {
-//   res.json({
-//     status: "false",
-//   });
-// });
+// app.use("/users", usersRoute);
+
+app.use("/api/submitFoundItem", submitFoundItem);
+app.use("/api/submitLostItem", submitLostItem);
 
 app.listen(port, () => {
   console.log(`API is running on port ${port}`);
