@@ -117,10 +117,10 @@ const Category = () => {
             <View key={category} style={styles.mapItem}>
               <TouchableOpacity
                 style={styles.mapContainer}
-                onPress={() => handlePress(category)}
+                onPress={() => handlePress(category.name)}
               >
                 <View style={styles.logoContainer}>
-                  <Image source={demo} style={styles.image} />
+                  <Image source={category.image} style={styles.image} />
                 </View>
                 <View style={{ paddingLeft: 30 }}>
                   <Text style={styles.categoryText}>{category.name}</Text>
