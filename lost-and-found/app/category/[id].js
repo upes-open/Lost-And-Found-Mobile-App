@@ -113,8 +113,8 @@ const Category = () => {
             flexWrap: "wrap",
           }}
         >
-          {categories[params.id - 1].subcategories?.map((category) => (
-            <View key={category} style={styles.mapItem}>
+          {categories[params.id - 1].subcategories?.map((category, index) => (
+            <View key={index} style={styles.mapItem}>
               <TouchableOpacity
                 style={styles.mapContainer}
                 onPress={() => handlePress(category.name)}
