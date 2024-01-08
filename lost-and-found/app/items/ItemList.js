@@ -9,7 +9,7 @@ import {
   ImageBackground,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import Carousel from "react-native-snap-carousel";
+import { FlatList } from "react-native";
 import { ArrowLeftIcon, ChevronLeftIcon } from "react-native-heroicons/outline";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
@@ -19,8 +19,7 @@ import { useGlobalSearchParams, useRouter } from "expo-router";
 
 const host = "https://lost-and-found.cyclic.app";
 
-var { width, height } = Dimensions.get('window');
-
+var { width, height } = Dimensions.get("window");
 
 export default function ItemList() {
   const params = useGlobalSearchParams();
@@ -60,6 +59,16 @@ export default function ItemList() {
     router.push(`/item-details/ItemDetails?id=${id}`);
   };
 
+  const renderItem = ({ item }) => (
+    <View style={{ paddingHorizontal: 20 }}>
+      <ItemCard
+        handleClick={handleClick}
+        id={item?._id}
+        itemImage={item?.itemImage}
+      />
+    </View>
+  );
+
   return (
     <View
       style={{
@@ -69,7 +78,6 @@ export default function ItemList() {
         alignContent: "center",
       }}
     >
-
       <TouchableOpacity
         onPress={() => navigation.goBack()}
         style={{
@@ -100,20 +108,12 @@ export default function ItemList() {
       </View>
 
       <View style={{ marginTop: 80 }}>
-        <Carousel
+        <FlatList
           data={filteredItems}
-          renderItem={({ item }) => (
-            <ItemCard
-              handleClick={handleClick}
-              id={item?._id}
-              itemImage={item?.itemImage}
-            />
-          )}
-          firstItem={0}
-          inactiveSlideOpacity={0.6}
-          sliderWidth={width}
-          itemWidth={width * 0.72}
-          slideStyle={{ display: "flex", alignItems: "center" }}
+          renderItem={renderItem}
+          keyExtractor={(item) => item?._id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
         />
       </View>
     </View>
