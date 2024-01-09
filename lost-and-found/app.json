@@ -20,11 +20,15 @@
         "origin": false
       },
       "eas": {
-        "projectId": "01a7378f-2629-4913-b187-1c60ceec04a2"
+        "projectId": "31fff813-092f-484a-b7ad-43cb40aa049a"
       }
     },
     "android": {
-      "package": "com.toxino.lostandfound"
-    }
+      "package": "com.toxino.lostandfound",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "owner": "aakshita"
   }
 }

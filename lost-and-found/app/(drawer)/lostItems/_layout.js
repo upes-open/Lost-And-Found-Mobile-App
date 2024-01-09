@@ -9,9 +9,9 @@ export default function LoginLayout() {
     return <ActivityIndicator size="large" />;
   }
 
-  if (!auth) {
-    return <Redirect href="/(drawer)/login" />;
-  }
+  // if (!auth) {
+  //   return <Redirect href="/(drawer)/login" />;
+  // }
 
   return (
     <>
