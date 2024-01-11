@@ -62,7 +62,7 @@ const  Feedback = () => {
                     reviews={["I just hate it 😠", "I don't like it 😞", "It is Okay 😐", "I like it 😃", "I love it 😍"]}
                     defaultRating={0}
                     size={40}
-                    selectedColor={"#e75959"}
+                    selectedColor={"#fc0"}
                     reviewColor={"black"}
                     reviewSize={20}
                     starStyle={{ margin: 6 }}

@@ -2,11 +2,10 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import user1 from "../../assets/images/user.png";
 import { getUserData } from "../../context/AppContext";
-import { useAuth } from "../../context/AuthContext";
+
 
 const DrawerMenu = () => {
   const { userData, setUserData } = getUserData();
-  const { auth: user, logout } = useAuth();
 
   return (
     <View
@@ -38,7 +37,7 @@ const DrawerMenu = () => {
           color: "#111",
         }}
       >
-        {user?.name}
+        Vinay Thapa
       </Text>
 
       <Text
@@ -49,7 +48,7 @@ const DrawerMenu = () => {
           color: "#111",
         }}
       >
-        {user?.unique_name}
+        500094110@stu.upes.ac.in
       </Text>
     </View>
   );
