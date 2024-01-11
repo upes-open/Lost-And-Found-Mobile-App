@@ -18,7 +18,13 @@
     "extra": {
       "router": {
         "origin": false
+      },
+      "eas": {
+        "projectId": "a2c54a8b-b2ae-46b5-95fb-c945ad36ddb0"
       }
+    },
+    "android": {
+      "package": "com.vinay.lostandfound"
     }
   }
 }
