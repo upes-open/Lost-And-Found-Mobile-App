@@ -18,13 +18,7 @@
     "extra": {
       "router": {
         "origin": false
-      },
-      "eas": {
-        "projectId": "01a7378f-2629-4913-b187-1c60ceec04a2"
       }
-    },
-    "android": {
-      "package": "com.toxino.lostandfound"
     }
   }
 }
