@@ -15,6 +15,12 @@
     ],
     "name": "lost-and-found",
     "slug": "lost-and-found",
+    "icon": "./assets/images/favicon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "extra": {
       "router": {
         "origin": false
