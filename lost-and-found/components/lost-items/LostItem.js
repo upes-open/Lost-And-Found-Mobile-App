@@ -22,7 +22,7 @@ import placeImage from "./images/place.png";
 import itemimage from "./images/item.png";
 
 const LostItem = () => {
-  const host = "http://172.192.10.202:3333"; // add your local device IP address here..
+  const host = "https://dull-pear-coyote-sock.cyclic.app"; // add your local device IP address here..
   
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
